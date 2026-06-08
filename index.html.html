@@ -288,16 +288,16 @@ a { color: inherit; text-decoration: none; }
 .hero-content {
   position: relative;
   z-index: 1;
-  padding: var(--spacing-2xl) 0;
+  padding: var(--spacing-lg) 0 var(--spacing-md);
 }
 
 .hero-eyebrow {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
@@ -311,11 +311,11 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-headline {
-  font-size: clamp(44px, 8vw, 96px);
+  font-size: clamp(28px, 4.5vw, 56px);
   font-weight: 800;
-  line-height: 1.0;
-  letter-spacing: -0.04em;
-  margin-bottom: var(--spacing-lg);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--spacing-sm);
 }
 .hero-headline .sub {
   display: block;
@@ -323,10 +323,10 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-subtext {
-  font-size: clamp(16px, 2vw, 18px);
+  font-size: clamp(13px, 1.5vw, 15px);
   color: var(--color-text-subtle);
   max-width: 480px;
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
   font-weight: 400;
 }
 
@@ -336,12 +336,12 @@ a { color: inherit; text-decoration: none; }
   align-items: flex-end;
   flex-wrap: wrap;
   gap: var(--spacing-md);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
 }
 
 .price-original {
   font-family: var(--font-mono);
-  font-size: 18px;
+  font-size: 16px;
   color: var(--color-text-muted);
   text-decoration: line-through;
   align-self: center;
@@ -349,7 +349,7 @@ a { color: inherit; text-decoration: none; }
 
 .price-sale {
   font-family: var(--font-mono);
-  font-size: clamp(44px, 6vw, 64px);
+  font-size: clamp(32px, 4vw, 48px);
   font-weight: 700;
   color: var(--color-accent);
   line-height: 1;
@@ -368,15 +368,15 @@ a { color: inherit; text-decoration: none; }
 }
 
 .price-saving {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
 }
 
 /* Scarcity bar */
 .scarcity-wrap {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
 }
 .scarcity-label {
   font-family: var(--font-mono);
@@ -404,7 +404,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Countdown */
 .countdown-wrap {
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
 }
 .countdown-label {
   font-family: var(--font-mono);
@@ -428,14 +428,14 @@ a { color: inherit; text-decoration: none; }
 }
 .countdown-box {
   font-family: var(--font-mono);
-  font-size: clamp(20px, 3vw, 28px);
+  font-size: clamp(16px, 2.5vw, 22px);
   font-weight: 600;
   color: var(--color-text);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  padding: 10px 14px;
+  padding: 8px 12px;
   border-radius: var(--radius-sm);
-  min-width: 58px;
+  min-width: 50px;
   text-align: center;
   line-height: 1;
 }
@@ -923,7 +923,7 @@ footer {
   <div class="nav-inner">
     <!-- EDIT: brand name -->
     <div class="nav-logo">office<span>365</span>.keys</div>
-    <a href="#cta-final" class="btn btn-primary" style="padding: 10px 22px; font-size: 13px;">Buy Now</a>
+    <a href="https://wa.me/212770808109" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 10px 22px; font-size: 13px;">Buy Now</a>
   </div>
 </nav>
 
@@ -995,7 +995,7 @@ footer {
       <!-- CTA BUTTONS -->
       <div class="hero-cta reveal reveal-delay-5">
         <!-- EDIT: buy link -->
-        <a href="#cta-final" class="btn btn-primary btn-lg">Buy Now — $9.00</a>
+        <a href="https://wa.me/212770808109" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Buy Now — $9.00</a>
         <a href="#features" class="btn btn-secondary btn-lg">See What's Included</a>
       </div>
 
@@ -1216,7 +1216,7 @@ footer {
     <p class="cta-saving reveal reveal-delay-1">You save $90.00</p>
 
     <!-- EDIT: buy link -->
-    <a href="#" class="btn btn-primary btn-lg reveal reveal-delay-2" style="font-size: 18px; padding: 20px 52px;">
+    <a href="https://wa.me/212770808109" target="_blank" rel="noopener" class="btn btn-primary btn-lg reveal reveal-delay-2" style="font-size: 18px; padding: 20px 52px;">
       Buy Now — $9.00
     </a>
 
@@ -1336,34 +1336,35 @@ footer {
 /* -------------------------------------------------------
    SCARCITY BAR — countdown every 8–12 mins, stops at 3
    ------------------------------------------------------- */
-(function () {
-  var count = 17;   // EDIT: starting stock count
-  var MIN_COUNT = 3;
-  var MAX_KEYS = 20; // reference total for bar width calculation
+var scarcityCount = 17;   // EDIT: starting stock count
+var SCARCITY_MIN  = 3;
+var SCARCITY_MAX  = 20;   // reference total for bar width
 
-  function updateScarcity() {
-    var el    = document.getElementById('scarcity-count');
-    var fill  = document.getElementById('scarcity-fill');
-    if (!el || !fill) return;
+function updateScarcity() {
+  var el   = document.getElementById('scarcity-count');
+  var fill = document.getElementById('scarcity-fill');
+  if (!el || !fill) return;
+  el.textContent = scarcityCount;
+  var pct = Math.max(3, Math.round((scarcityCount / SCARCITY_MAX) * 100));
+  fill.style.width = pct + '%';
+}
 
-    el.textContent = count;
-    var pct = Math.max(3, Math.round((count / MAX_KEYS) * 100));
-    fill.style.width = pct + '%';
+function decrementScarcity() {
+  if (scarcityCount > SCARCITY_MIN) {
+    scarcityCount--;
+    updateScarcity();
   }
+}
 
+(function () {
+  updateScarcity();
   function scheduleNext() {
-    // random delay between 8 and 12 minutes (ms)
     var delay = (8 + Math.random() * 4) * 60 * 1000;
     setTimeout(function() {
-      if (count > MIN_COUNT) {
-        count--;
-        updateScarcity();
-        scheduleNext();
-      }
+      decrementScarcity();
+      scheduleNext();
     }, delay);
   }
-
-  updateScarcity();
   scheduleNext();
 })();
 
@@ -1412,6 +1413,9 @@ footer {
       currentToast.remove();
       currentToast = null;
     }
+
+    // Decrement scarcity counter when someone "buys"
+    decrementScarcity();
 
     var toast = document.createElement('div');
     toast.className = 'toast';
