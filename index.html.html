@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Office 365 — 1-Year Subscription Key</title> <!-- EDIT: page title / brand -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --color-bg:           #0a0a0a;
+  --color-surface:      #111111;
+  --color-surface-2:    #161616;
+  --color-border:       #1f1f1f;
+  --color-text:         #f0ede8;
+  --color-text-muted:   #5a5a5a;
+  --color-text-subtle:  #888888;
+  --color-accent:       #00d4ff;      /* electric blue */
+  --color-accent-hover: #33ddff;
+  --color-accent-dim:   rgba(0, 212, 255, 0.08);
+  --color-accent-glow:  rgba(0, 212, 255, 0.25);
+  --color-danger:       #ff3b30;
+  --color-green:        #00ff87;
+
+  --font-display: 'Syne', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --spacing-xs:   4px;
+  --spacing-sm:   8px;
+  --spacing-md:   16px;
+  --spacing-lg:   24px;
+  --spacing-xl:   40px;
+  --spacing-2xl:  80px;
+  --spacing-3xl:  120px;
+
+  --radius-sm:    4px;
+  --radius-md:    8px;
+  --radius-lg:    16px;
+  --radius-pill:  999px;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 280ms ease;
+  --transition-slow: 500ms ease;
+
+  --max-width: 1200px;
+  --nav-height: 64px;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+::selection {
+  background: var(--color-accent);
+  color: #000;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 2px; }
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+@media (min-width: 768px) {
+  .container { padding: 0 var(--spacing-xl); }
+}
+
+.accent { color: var(--color-accent); }
+.mono   { font-family: var(--font-mono); }
+
+/* Fade-in for scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* Section label */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+  display: block;
+}
+
+/* Section heading */
+.section-heading {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-xl);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-base), background var(--transition-fast);
+  white-space: nowrap;
+}
+.btn:hover { transform: scale(1.03); }
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #000;
+  box-shadow: 0 0 0 0 var(--color-accent-glow);
+}
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+  box-shadow: 0 0 28px 4px var(--color-accent-glow);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  box-shadow: 0 0 16px 0 var(--color-accent-dim);
+}
+
+.btn-lg {
+  font-size: 16px;
+  padding: 18px 40px;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-md);
+  transition: background var(--transition-base), backdrop-filter var(--transition-base), border-bottom var(--transition-base);
+  border-bottom: 1px solid transparent;
+}
+
+#navbar.scrolled {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: var(--color-border);
+}
+
+@media (min-width: 768px) {
+  #navbar { padding: 0 var(--spacing-xl); }
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+.nav-logo span { color: var(--color-accent); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-height);
+  overflow: hidden;
+}
+
+/* Animated gradient mesh background */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.07) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  animation: drift1 18s ease-in-out infinite alternate;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.04) 0%, transparent 70%);
+  bottom: -50px;
+  left: 10%;
+  animation: drift2 22s ease-in-out infinite alternate;
+}
+@keyframes drift1 {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(40px, 60px) scale(1.1); }
+}
+@keyframes drift2 {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(-30px, -40px) scale(1.08); }
+}
+
+/* Noise overlay */
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: var(--spacing-2xl) 0;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+.hero-headline {
+  font-size: clamp(44px, 8vw, 96px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--spacing-lg);
+}
+.hero-headline .sub {
+  display: block;
+  color: var(--color-accent);
+}
+
+.hero-subtext {
+  font-size: clamp(16px, 2vw, 18px);
+  color: var(--color-text-subtle);
+  max-width: 480px;
+  margin-bottom: var(--spacing-xl);
+  font-weight: 400;
+}
+
+/* Price block */
+.price-block {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.price-original {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+  align-self: center;
+}
+
+.price-sale {
+  font-family: var(--font-mono);
+  font-size: clamp(44px, 6vw, 64px);
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.price-badge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: var(--color-accent);
+  color: #000;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  align-self: center;
+}
+
+.price-saving {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Scarcity bar */
+.scarcity-wrap {
+  margin-bottom: var(--spacing-lg);
+}
+.scarcity-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-subtle);
+  margin-bottom: var(--spacing-sm);
+}
+.scarcity-label span {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+.scarcity-bar {
+  width: 220px;
+  height: 3px;
+  background: var(--color-border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.scarcity-fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  transition: width 1s ease;
+}
+
+/* Countdown */
+.countdown-wrap {
+  margin-bottom: var(--spacing-xl);
+}
+.countdown-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-sm);
+}
+.countdown-digits {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.countdown-box {
+  font-family: var(--font-mono);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  min-width: 58px;
+  text-align: center;
+  line-height: 1;
+}
+.countdown-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.countdown-sep {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  color: var(--color-text-muted);
+  align-self: flex-start;
+  padding-top: 8px;
+}
+
+/* Hero CTA row */
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+/* ============================================================
+   FEATURES GRID
+   ============================================================ */
+#features {
+  padding: var(--spacing-3xl) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+@media (min-width: 480px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .features-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.feature-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,212,255,0.3);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 20px var(--color-accent-dim);
+}
+
+.feature-icon {
+  font-size: 28px;
+  margin-bottom: var(--spacing-md);
+  line-height: 1;
+}
+.feature-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+}
+.feature-desc {
+  font-size: 14px;
+  color: var(--color-text-subtle);
+  line-height: 1.65;
+}
+
+/* ============================================================
+   HOW IT WORKS
+   ============================================================ */
+#how {
+  padding: var(--spacing-3xl) 0;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+}
+
+.steps-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .steps-wrap {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+  }
+}
+
+.step {
+  flex: 1;
+  position: relative;
+  padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-lg) 0;
+}
+
+@media (min-width: 768px) {
+  /* connector line */
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 36px;
+    right: 0;
+    width: calc(100% - 80px);
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-border) 0%, transparent 100%);
+    left: 80px;
+  }
+}
+
+.step-number {
+  font-family: var(--font-mono);
+  font-size: clamp(52px, 6vw, 72px);
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.9;
+}
+
+.step-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+}
+.step-desc {
+  font-size: 14px;
+  color: var(--color-text-subtle);
+  max-width: 220px;
+  line-height: 1.65;
+}
+
+/* ============================================================
+   TRUST / TESTIMONIALS
+   ============================================================ */
+#trust {
+  padding: var(--spacing-3xl) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+@media (min-width: 768px) {
+  .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.testimonial-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.stars {
+  color: #fbbf24;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: var(--spacing-md);
+}
+
+.testimonial-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text-subtle);
+  margin-bottom: var(--spacing-lg);
+  font-style: italic;
+}
+.testimonial-author {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+}
+.testimonial-loc {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  margin-top: 2px;
+}
+
+/* Badges */
+.badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--color-text-subtle);
+}
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+/* ============================================================
+   FAQ ACCORDION
+   ============================================================ */
+#faq {
+  padding: var(--spacing-3xl) 0;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+}
+
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+.faq-item:last-child { border-bottom: none; }
+
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.faq-q:hover { background: var(--color-surface); }
+.faq-q.open { color: var(--color-accent); background: var(--color-surface); }
+
+.faq-icon {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+  transition: transform var(--transition-base);
+  line-height: 1;
+}
+.faq-q.open .faq-icon { transform: rotate(45deg); }
+
+.faq-answer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 var(--spacing-xl);
+}
+.faq-answer.open {
+  max-height: 300px;
+  padding: 0 var(--spacing-xl) var(--spacing-lg);
+}
+
+.faq-answer p {
+  font-size: 14px;
+  color: var(--color-text-subtle);
+  line-height: 1.75;
+}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+#cta-final {
+  padding: var(--spacing-3xl) 0;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#cta-final::before {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 65%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cta-headline {
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-xl);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-price-block {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.cta-saving {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  margin-bottom: var(--spacing-xl);
+}
+
+.urgency-line {
+  margin-top: var(--spacing-lg);
+  font-size: 13px;
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  border-top: 1px solid var(--color-border);
+  padding: var(--spacing-xl) var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-align: center;
+}
+@media (min-width: 768px) {
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--spacing-xl) var(--spacing-xl);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.footer-logo {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+}
+.footer-logo span { color: var(--color-accent); }
+
+.footer-copy {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}
+
+/* ============================================================
+   TOAST NOTIFICATION
+   ============================================================ */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  max-width: 280px;
+  pointer-events: all;
+  transform: translateX(-120%);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+}
+.toast.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+.toast.hide {
+  transform: translateX(-120%);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.3s ease;
+}
+
+.toast-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-green);
+  flex-shrink: 0;
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,135,0.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(0,255,135,0); }
+}
+
+.toast-text {
+  flex: 1;
+}
+.toast-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+.toast-meta {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  margin-top: 2px;
+}
+
+.toast-check {
+  font-size: 14px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   DIVIDERS
+   ============================================================ */
+.line-accent {
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background: var(--color-accent);
+  border-radius: 1px;
+  margin-bottom: var(--spacing-lg);
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <!-- EDIT: brand name -->
+    <div class="nav-logo">office<span>365</span>.keys</div>
+    <a href="#cta-final" class="btn btn-primary" style="padding: 10px 22px; font-size: 13px;">Buy Now</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+  <div class="container">
+    <div class="hero-content">
+
+      <div class="hero-eyebrow reveal">Genuine License Key</div>
+
+      <h1 class="hero-headline reveal reveal-delay-1">
+        Microsoft Office 365
+        <span class="sub">1-Year Subscription</span>
+      </h1>
+
+      <p class="hero-subtext reveal reveal-delay-2">
+        <!-- EDIT: value proposition -->
+        Instant delivery. Genuine key. Works worldwide on all your devices.
+      </p>
+
+      <!-- PRICE BLOCK -->
+      <div class="price-block reveal reveal-delay-3">
+        <!-- EDIT: original price -->
+        <span class="price-original">$99.00</span>
+        <!-- EDIT: sale price -->
+        <span class="price-sale">$9.00</span>
+        <!-- EDIT: discount badge -->
+        <span class="price-badge">−90% OFF</span>
+      </div>
+      <!-- EDIT: saving amount -->
+      <p class="price-saving reveal reveal-delay-3">You save $90.00</p>
+
+      <!-- SCARCITY BAR -->
+      <div class="scarcity-wrap reveal reveal-delay-3">
+        <div class="scarcity-label">
+          Keys remaining today: <span id="scarcity-count">17</span>
+        </div>
+        <div class="scarcity-bar">
+          <!-- width is controlled by JS; initial ~15% -->
+          <div class="scarcity-fill" id="scarcity-fill" style="width: 15%;"></div>
+        </div>
+      </div>
+
+      <!-- COUNTDOWN TIMER -->
+      <div class="countdown-wrap reveal reveal-delay-4">
+        <div class="countdown-label">Offer resets in:</div>
+        <div class="countdown-digits">
+          <div class="countdown-unit">
+            <div class="countdown-box mono" id="cd-h">00</div>
+            <div class="countdown-sub">HRS</div>
+          </div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-unit">
+            <div class="countdown-box mono" id="cd-m">00</div>
+            <div class="countdown-sub">MIN</div>
+          </div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-unit">
+            <div class="countdown-box mono" id="cd-s">00</div>
+            <div class="countdown-sub">SEC</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA BUTTONS -->
+      <div class="hero-cta reveal reveal-delay-5">
+        <!-- EDIT: buy link -->
+        <a href="#cta-final" class="btn btn-primary btn-lg">Buy Now — $9.00</a>
+        <a href="#features" class="btn btn-secondary btn-lg">See What's Included</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURES GRID
+     ============================================================ -->
+<section id="features">
+  <div class="container">
+    <span class="section-label reveal">What's included</span>
+    <h2 class="section-heading reveal reveal-delay-1">Everything You Get</h2>
+    <div class="features-grid">
+
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">📝</div>
+        <div class="feature-title">Word, Excel, PowerPoint & OneNote</div>
+        <div class="feature-desc">Full access to the entire Microsoft 365 suite — create, edit, and share documents, spreadsheets, presentations, and notes.</div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">☁️</div>
+        <div class="feature-title">1 TB OneDrive Cloud Storage</div>
+        <div class="feature-desc">Store and access all your files from anywhere with one full terabyte of secure, personal cloud storage.</div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon">🖥️</div>
+        <div class="feature-title">PC, Mac, iOS & Android</div>
+        <div class="feature-desc">Works seamlessly across all major platforms. Install on Windows, macOS, iPhone, iPad, and Android devices.</div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">🔗</div>
+        <div class="feature-title">Up to 5 Devices Simultaneously</div>
+        <div class="feature-desc">One key activates Office on up to 5 devices at the same time. Perfect for home and work.</div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Instant Email Delivery</div>
+        <div class="feature-desc">Your license key is delivered to your inbox immediately after payment is confirmed — no waiting, no shipping.</div>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon">🗓️</div>
+        <div class="feature-title">1-Year Validity, Renewable</div>
+        <div class="feature-desc">12 full months of access. Renew easily at the end of your subscription — no automatic charges.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS
+     ============================================================ -->
+<section id="how">
+  <div class="container">
+    <span class="section-label reveal">Simple process</span>
+    <h2 class="section-heading reveal reveal-delay-1">3 Steps to Get Started</h2>
+    <div class="steps-wrap">
+
+      <div class="step reveal reveal-delay-1">
+        <div class="step-number">01</div>
+        <div class="step-title">Purchase</div>
+        <div class="step-desc">Click Buy Now and complete your secure payment in seconds.</div>
+      </div>
+
+      <div class="step reveal reveal-delay-2">
+        <div class="step-number">02</div>
+        <div class="step-title">Receive Key by Email</div>
+        <div class="step-desc">Your genuine license key arrives in your inbox immediately after payment.</div>
+      </div>
+
+      <div class="step reveal reveal-delay-3">
+        <div class="step-number">03</div>
+        <div class="step-title">Activate on Microsoft.com</div>
+        <div class="step-desc">Visit microsoft.com/redeem, enter your key, and you're ready to go.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUST / SOCIAL PROOF
+     ============================================================ -->
+<section id="trust">
+  <div class="container">
+    <span class="section-label reveal">Trusted by thousands</span>
+    <h2 class="section-heading reveal reveal-delay-1">What Our Customers Say</h2>
+
+    <div class="testimonials-grid">
+
+      <!-- EDIT: testimonial 1 -->
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Received my key within 60 seconds. Activated without a single issue. Couldn't believe the price — this is genuinely the best deal I've found for Office."</p>
+        <div class="testimonial-author">Karim B.</div>
+        <div class="testimonial-loc">Morocco · Verified buyer</div>
+      </div>
+
+      <!-- EDIT: testimonial 2 -->
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Was skeptical at first but the key worked perfectly on my MacBook and iPhone. OneDrive synced right away. Super happy with the purchase."</p>
+        <div class="testimonial-author">Sara M.</div>
+        <div class="testimonial-loc">France · Verified buyer</div>
+      </div>
+
+      <!-- EDIT: testimonial 3 -->
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Bought for my whole family. All 5 devices activated no problem. Support replied instantly when I had a question. Highly recommend."</p>
+        <div class="testimonial-author">Ahmed T.</div>
+        <div class="testimonial-loc">UAE · Verified buyer</div>
+      </div>
+
+    </div>
+
+    <!-- Trust badges -->
+    <div class="badges-row reveal">
+      <div class="badge"><span class="badge-dot"></span> Genuine Key</div>
+      <div class="badge"><span class="badge-dot"></span> Instant Delivery</div>
+      <div class="badge"><span class="badge-dot"></span> Secure Payment</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section id="faq">
+  <div class="container">
+    <span class="section-label reveal">Have questions?</span>
+    <h2 class="section-heading reveal reveal-delay-1" style="text-align:center;">Frequently Asked</h2>
+
+    <div class="faq-list reveal reveal-delay-2">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Is this key genuine?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Every key we sell is 100% genuine and sourced from authorized Microsoft distribution channels. Each key activates directly on microsoft.com with no issues.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How long does delivery take?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Delivery is instant. As soon as your payment is confirmed, your license key is sent automatically to your email address — typically within 60 seconds.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Can I use it on multiple devices?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Microsoft 365 allows you to install and use your subscription on up to 5 devices simultaneously — including PC, Mac, iPad, iPhone, and Android.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What if the key doesn't work?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>In the rare event of an issue, contact our support team and we will replace your key immediately at no cost. Customer satisfaction is guaranteed.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Is this a one-time payment?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes, completely. You pay once and get 12 months of full Office 365 access. There are no recurring charges or automatic renewals — you're always in control.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA
+     ============================================================ -->
+<section id="cta-final">
+  <div class="container">
+    <h2 class="cta-headline reveal">
+      Get Microsoft Office 365 Today.<br>
+      <span class="accent">One key. All devices.</span>
+    </h2>
+
+    <!-- PRICE BLOCK -->
+    <div class="cta-price-block reveal reveal-delay-1">
+      <!-- EDIT: original price -->
+      <span class="price-original">$99.00</span>
+      <!-- EDIT: sale price -->
+      <span class="price-sale">$9.00</span>
+      <!-- EDIT: discount badge -->
+      <span class="price-badge">−90% OFF</span>
+    </div>
+    <!-- EDIT: saving -->
+    <p class="cta-saving reveal reveal-delay-1">You save $90.00</p>
+
+    <!-- EDIT: buy link -->
+    <a href="#" class="btn btn-primary btn-lg reveal reveal-delay-2" style="font-size: 18px; padding: 20px 52px;">
+      Buy Now — $9.00
+    </a>
+
+    <p class="urgency-line reveal reveal-delay-3">⚡ Limited stock — order today</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <!-- EDIT: footer brand / copyright -->
+  <div class="footer-logo">office<span>365</span>.keys</div>
+  <div class="footer-copy">© 2025 office365.keys — All rights reserved</div>
+</footer>
+
+<!-- ============================================================
+     TOAST CONTAINER
+     ============================================================ -->
+<div id="toast-container"></div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* -------------------------------------------------------
+   NAVBAR: scroll opacity / blur
+   ------------------------------------------------------- */
+(function () {
+  var nav = document.getElementById('navbar');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 20) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+})();
+
+/* -------------------------------------------------------
+   SCROLL REVEAL via IntersectionObserver
+   ------------------------------------------------------- */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function(el){ obs.observe(el); });
+})();
+
+/* -------------------------------------------------------
+   FAQ ACCORDION
+   ------------------------------------------------------- */
+(function () {
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var answer = btn.nextElementSibling;
+      var isOpen = btn.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-q').forEach(function(b){
+        b.classList.remove('open');
+        b.setAttribute('aria-expanded', 'false');
+      });
+      document.querySelectorAll('.faq-answer').forEach(function(a){
+        a.classList.remove('open');
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.classList.add('open');
+      }
+    });
+  });
+})();
+
+/* -------------------------------------------------------
+   COUNTDOWN TIMER — counts down to midnight (local)
+   ------------------------------------------------------- */
+(function () {
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function updateCountdown() {
+    var now  = new Date();
+    var midnight = new Date(now);
+    midnight.setHours(24, 0, 0, 0);
+    var diff = Math.max(0, Math.floor((midnight - now) / 1000));
+
+    var h = Math.floor(diff / 3600);
+    var m = Math.floor((diff % 3600) / 60);
+    var s = diff % 60;
+
+    var cdH = document.getElementById('cd-h');
+    var cdM = document.getElementById('cd-m');
+    var cdS = document.getElementById('cd-s');
+
+    if (cdH) cdH.textContent = pad(h);
+    if (cdM) cdM.textContent = pad(m);
+    if (cdS) cdS.textContent = pad(s);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
+
+/* -------------------------------------------------------
+   SCARCITY BAR — countdown every 8–12 mins, stops at 3
+   ------------------------------------------------------- */
+(function () {
+  var count = 17;   // EDIT: starting stock count
+  var MIN_COUNT = 3;
+  var MAX_KEYS = 20; // reference total for bar width calculation
+
+  function updateScarcity() {
+    var el    = document.getElementById('scarcity-count');
+    var fill  = document.getElementById('scarcity-fill');
+    if (!el || !fill) return;
+
+    el.textContent = count;
+    var pct = Math.max(3, Math.round((count / MAX_KEYS) * 100));
+    fill.style.width = pct + '%';
+  }
+
+  function scheduleNext() {
+    // random delay between 8 and 12 minutes (ms)
+    var delay = (8 + Math.random() * 4) * 60 * 1000;
+    setTimeout(function() {
+      if (count > MIN_COUNT) {
+        count--;
+        updateScarcity();
+        scheduleNext();
+      }
+    }, delay);
+  }
+
+  updateScarcity();
+  scheduleNext();
+})();
+
+/* -------------------------------------------------------
+   TOAST / PURCHASE NOTIFICATIONS
+   ------------------------------------------------------- */
+(function () {
+  // EDIT: customize names and countries
+  var BUYERS = [
+    { name: 'Ahmed', country: 'Morocco' },
+    { name: 'Sara',  country: 'France' },
+    { name: 'Youssef', country: 'Algeria' },
+    { name: 'Leila', country: 'Tunisia' },
+    { name: 'Omar',  country: 'Spain' },
+    { name: 'Fatima', country: 'Netherlands' },
+    { name: 'Karim', country: 'Germany' },
+    { name: 'Nadia', country: 'Belgium' },
+    { name: 'Hassan', country: 'UAE' },
+    { name: 'Sofia', country: 'Italy' },
+    { name: 'Mehdi', country: 'Sweden' },
+    { name: 'Layla', country: 'Canada' },
+    { name: 'Amine', country: 'UK' },
+    { name: 'Rania', country: 'USA' },
+    { name: 'Tariq', country: 'Australia' },
+    { name: 'Hind',  country: 'Portugal' },
+    { name: 'Bilal', country: 'Turkey' },
+    { name: 'Meryem', country: 'Switzerland' },
+  ];
+
+  var container = document.getElementById('toast-container');
+  var currentToast = null;
+  var lastIndex = -1;
+
+  function pickRandom() {
+    var idx;
+    do { idx = Math.floor(Math.random() * BUYERS.length); } while (idx === lastIndex);
+    lastIndex = idx;
+    return BUYERS[idx];
+  }
+
+  function showToast() {
+    var buyer = pickRandom();
+
+    // Remove existing toast immediately
+    if (currentToast) {
+      currentToast.remove();
+      currentToast = null;
+    }
+
+    var toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML =
+      '<div class="toast-dot"></div>' +
+      '<div class="toast-text">' +
+        '<div class="toast-name">' + buyer.name + ' from ' + buyer.country + '</div>' +
+        '<div class="toast-meta">just purchased · moments ago</div>' +
+      '</div>' +
+      '<div class="toast-check">✓</div>';
+
+    container.appendChild(toast);
+    currentToast = toast;
+
+    // Trigger show animation
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        toast.classList.add('show');
+      });
+    });
+
+    // Auto-dismiss after 4 seconds
+    var dismissTimer = setTimeout(function() {
+      dismissToast(toast);
+    }, 4000);
+
+    // Click to dismiss
+    toast.addEventListener('click', function() {
+      clearTimeout(dismissTimer);
+      dismissToast(toast);
+    });
+  }
+
+  function dismissToast(toast) {
+    toast.classList.remove('show');
+    toast.classList.add('hide');
+    setTimeout(function() {
+      if (toast.parentNode) toast.remove();
+      if (currentToast === toast) currentToast = null;
+    }, 400);
+  }
+
+  function scheduleToast() {
+    // Random interval between 20 and 40 seconds
+    var delay = (20 + Math.random() * 20) * 1000;
+    setTimeout(function() {
+      showToast();
+      scheduleToast();
+    }, delay);
+  }
+
+  // Show first toast after a short warmup delay
+  setTimeout(function() {
+    showToast();
+    scheduleToast();
+  }, 5000);
+})();
+</script>
+</body>
+</html>
