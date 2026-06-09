@@ -585,22 +585,97 @@ a { color: inherit; text-decoration: none; }
   border-top: 1px solid var(--color-border);
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-md);
+.testimonials-carousel {
+  position: relative;
   margin-bottom: var(--spacing-xl);
 }
-@media (min-width: 768px) {
-  .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+
+.testimonials-track-wrap {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.testimonials-track {
+  display: flex;
+  gap: var(--spacing-md);
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  cursor: grab;
+  user-select: none;
+}
+.testimonials-track.dragging {
+  cursor: grabbing;
+  transition: none;
 }
 
 .testimonial-card {
+  flex: 0 0 calc(100% - 0px);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--spacing-xl) var(--spacing-lg);
+  box-sizing: border-box;
 }
+@media (min-width: 768px) {
+  .testimonial-card { flex: 0 0 calc(50% - 8px); }
+}
+@media (min-width: 1024px) {
+  .testimonial-card { flex: 0 0 calc(33.333% - 11px); }
+}
+
+/* Carousel controls */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.carousel-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+  flex-shrink: 0;
+}
+.carousel-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+}
+.carousel-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+  pointer-events: none;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  cursor: pointer;
+}
+.carousel-dot.active {
+  background: var(--color-accent);
+  transform: scale(1.4);
+}
+
 
 .stars {
   color: #fbbf24;
@@ -1156,135 +1231,147 @@ footer {
     <span class="section-label reveal">Trusted by thousands</span>
     <h2 class="section-heading reveal reveal-delay-1">What Our Customers Say</h2>
 
-    <div class="testimonials-grid">
+    <div class="testimonials-carousel reveal reveal-delay-1">
+      <div class="testimonials-track-wrap">
+        <div class="testimonials-track" id="testimonials-track">
 
-      <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"Received my key within 60 seconds. Activated without a single issue. Couldn't believe the price — this is genuinely the best deal I've found for Office."</p>
         <div class="testimonial-author">Karim B.</div>
         <div class="testimonial-loc">Morocco · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"Was skeptical at first but the key worked perfectly on my MacBook and iPhone. OneDrive synced right away. Super happy with the purchase."</p>
         <div class="testimonial-author">Sara M.</div>
         <div class="testimonial-loc">France · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-3">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"Bought for my whole family. All 5 devices activated no problem. Support replied instantly when I had a question. Highly recommend."</p>
         <div class="testimonial-author">Ahmed T.</div>
         <div class="testimonial-loc">UAE · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"I've been renewing this every year for the last 3 years. Never had a single problem. The price is unbeatable and delivery is always instant."</p>
         <div class="testimonial-author">James R.</div>
         <div class="testimonial-loc">United Kingdom · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-card">
         <div class="stars">★★★★☆</div>
         <p class="testimonial-text">"Key worked perfectly first try. Took maybe 2 minutes total from purchase to having Office installed. Only reason for 4 stars is I wish they also sold the Family plan."</p>
         <div class="testimonial-author">Luisa F.</div>
         <div class="testimonial-loc">Italy · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-3">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"Honestly shocked this worked so well. Key in my email in under a minute, activated on Microsoft's site with zero issues. 1TB of OneDrive storage alone is worth the price."</p>
         <div class="testimonial-author">Daniel K.</div>
         <div class="testimonial-loc">Germany · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"Used this for my small business. Got keys for 3 employees — all activated without issues. Saves us a ton compared to buying directly from Microsoft."</p>
         <div class="testimonial-author">Nour A.</div>
         <div class="testimonial-loc">Egypt · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-card">
         <div class="stars">★★★★☆</div>
         <p class="testimonial-text">"Solid purchase. Key was genuine and activated fine on my Windows 11 laptop. Delivery was fast. Would have given 5 stars but PayPal wasn't available as payment option."</p>
         <div class="testimonial-author">Marcus V.</div>
         <div class="testimonial-loc">Netherlands · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-3">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"My sister recommended this. Bought it for my new laptop and it worked instantly. Word and Excel are exactly what I needed for university. Great value."</p>
         <div class="testimonial-author">Amira H.</div>
         <div class="testimonial-loc">Tunisia · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"I was worried it might be a scam at this price. It's not. 100% legit key, works on all my devices. I've already recommended it to 4 friends."</p>
         <div class="testimonial-author">Thomas B.</div>
         <div class="testimonial-loc">Belgium · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"Bought this on a Friday evening thinking I'd have to wait until Monday. Key was in my inbox in 45 seconds. Activated on my Mac and PC without any issues."</p>
         <div class="testimonial-author">Yasmin O.</div>
         <div class="testimonial-loc">Sweden · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-3">
+      <div class="testimonial-card">
         <div class="stars">★★★★☆</div>
         <p class="testimonial-text">"Third time buying here. Always works, always fast. The only thing I'd improve is adding a live chat support option, but honestly I've never actually needed support."</p>
         <div class="testimonial-author">Carlos M.</div>
         <div class="testimonial-loc">Spain · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"Got it as a gift for my dad who needed Office for his work. Setup was simple enough that he did it himself following the Microsoft instructions. Extremely happy."</p>
         <div class="testimonial-author">Fatou D.</div>
         <div class="testimonial-loc">Senegal · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"Works on my iPad, iPhone and Windows desktop simultaneously. OneDrive syncing between all three is seamless. Incredible deal for what you get."</p>
         <div class="testimonial-author">Ryan C.</div>
         <div class="testimonial-loc">Canada · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-3">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"I teach at a university and needed Office for research. This saved me over $80 compared to the official Microsoft price. Activated in seconds, works perfectly."</p>
         <div class="testimonial-author">Prof. Mehdi Z.</div>
         <div class="testimonial-loc">Morocco · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-card">
         <div class="stars">★★★★☆</div>
         <p class="testimonial-text">"Legit key, fast delivery. I had a small issue activating at first (turned out I had an old Office version conflicting) and support helped me sort it out quickly."</p>
         <div class="testimonial-author">Elena P.</div>
         <div class="testimonial-loc">Romania · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"Purchased at midnight, key arrived immediately, activated by 12:05am. That's how you run a business. Will definitely be back when it's time to renew."</p>
         <div class="testimonial-author">Kevin A.</div>
         <div class="testimonial-loc">Australia · Verified buyer</div>
       </div>
 
-      <div class="testimonial-card reveal reveal-delay-3">
+      <div class="testimonial-card">
         <div class="stars">★★★★★</div>
         <p class="testimonial-text">"Already purchased 3 times over the past 3 years. Never once had an issue. This is my go-to for Office — I won't be going back to paying full price."</p>
         <div class="testimonial-author">Rania S.</div>
         <div class="testimonial-loc">Jordan · Verified buyer</div>
       </div>
 
-    </div>
+        </div><!-- end track -->
+      </div><!-- end track-wrap -->
+
+      <!-- Controls -->
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="carousel-prev" aria-label="Previous">&#8592;</button>
+        <div class="carousel-dots" id="carousel-dots"></div>
+        <button class="carousel-btn" id="carousel-next" aria-label="Next">&#8594;</button>
+      </div>
+
+    </div><!-- end carousel -->
 
     <!-- Trust badges -->
     <div class="badges-row reveal">
@@ -1472,8 +1559,120 @@ footer {
 })();
 
 /* -------------------------------------------------------
-   COUNTDOWN TIMER — counts down to midnight (local)
+   TESTIMONIALS CAROUSEL
    ------------------------------------------------------- */
+(function () {
+  var track     = document.getElementById('testimonials-track');
+  var prevBtn   = document.getElementById('carousel-prev');
+  var nextBtn   = document.getElementById('carousel-next');
+  var dotsWrap  = document.getElementById('carousel-dots');
+  if (!track) return;
+
+  var cards       = track.querySelectorAll('.testimonial-card');
+  var total       = cards.length;
+  var current     = 0;
+  var visibleCount = 1;
+
+  function getVisible() {
+    var w = window.innerWidth;
+    if (w >= 1024) return 3;
+    if (w >= 768)  return 2;
+    return 1;
+  }
+
+  function maxIndex() {
+    return Math.max(0, total - visibleCount);
+  }
+
+  function cardWidth() {
+    if (!cards[0]) return 0;
+    return cards[0].getBoundingClientRect().width + parseInt(getComputedStyle(track).gap || 16);
+  }
+
+  // Build dots
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    var pages = maxIndex() + 1;
+    for (var i = 0; i < pages; i++) {
+      var d = document.createElement('button');
+      d.className = 'carousel-dot' + (i === current ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      d.dataset.idx = i;
+      d.addEventListener('click', function() { goTo(parseInt(this.dataset.idx)); });
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function updateDots() {
+    var dots = dotsWrap.querySelectorAll('.carousel-dot');
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, maxIndex()));
+    track.style.transform = 'translateX(-' + (cardWidth() * current) + 'px)';
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current >= maxIndex();
+    updateDots();
+  }
+
+  prevBtn.addEventListener('click', function() { goTo(current - 1); });
+  nextBtn.addEventListener('click', function() { goTo(current + 1); });
+
+  // Touch swipe
+  var touchStartX = 0;
+  var touchDeltaX = 0;
+  track.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchDeltaX = 0;
+  }, { passive: true });
+  track.addEventListener('touchmove', function(e) {
+    touchDeltaX = e.touches[0].clientX - touchStartX;
+  }, { passive: true });
+  track.addEventListener('touchend', function() {
+    if (touchDeltaX < -50) goTo(current + 1);
+    else if (touchDeltaX > 50) goTo(current - 1);
+  });
+
+  // Mouse drag
+  var dragStartX = 0;
+  var isDragging = false;
+  track.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    dragStartX = e.clientX;
+    track.classList.add('dragging');
+  });
+  window.addEventListener('mousemove', function(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+  });
+  window.addEventListener('mouseup', function(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove('dragging');
+    var delta = e.clientX - dragStartX;
+    if (delta < -50) goTo(current + 1);
+    else if (delta > 50) goTo(current - 1);
+  });
+
+  // Init + resize
+  function init() {
+    visibleCount = getVisible();
+    if (current > maxIndex()) current = maxIndex();
+    buildDots();
+    goTo(current);
+  }
+
+  init();
+  window.addEventListener('resize', function() {
+    visibleCount = getVisible();
+    if (current > maxIndex()) current = maxIndex();
+    buildDots();
+    goTo(current);
+  });
+})();
 (function () {
   function pad(n){ return n < 10 ? '0' + n : '' + n; }
 
