@@ -457,8 +457,8 @@ a { color: inherit; text-decoration: none; }
 /* Hero CTA row */
 .hero-cta {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: var(--spacing-md);
 }
 
@@ -1056,7 +1056,11 @@ footer {
   <div class="nav-inner">
     <!-- EDIT: brand name -->
     <div class="nav-logo">office<span>365</span>.keys</div>
-    <a href="https://wa.me/212770808109" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 10px 22px; font-size: 13px;">Buy Now</a>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <a href="https://wa.me/212770808109" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 10px 22px; font-size: 13px;">Buy Now</a>
+      <!-- EDIT: NOWPayments crypto link -->
+      <a href="https://nowpayments.io/payment/?iid=6157269492&source=button" target="_blank" rel="noreferrer noopener" class="btn btn-crypto" style="padding: 10px 18px; font-size: 12px;">Buy with Crypto</a>
+    </div>
   </div>
 </nav>
 
@@ -1130,11 +1134,13 @@ footer {
 
           <!-- CTA BUTTONS -->
           <div class="hero-cta reveal reveal-delay-5">
-            <!-- EDIT: buy link -->
-            <a href="https://wa.me/212770808109" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Buy Now — $9.00</a>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-md);">
+              <!-- EDIT: buy link -->
+              <a href="https://wa.me/212770808109" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Buy Now — $9.00</a>
+              <!-- EDIT: NOWPayments crypto link -->
+              <a href="https://nowpayments.io/payment/?iid=6157269492&source=button" target="_blank" rel="noreferrer noopener" class="btn btn-crypto">Buy with Crypto</a>
+            </div>
             <a href="#features" class="btn btn-secondary btn-lg">See What's Included</a>
-            <!-- EDIT: NOWPayments crypto link -->
-            <a href="https://nowpayments.io/payment/?iid=6157269492&source=button" target="_blank" rel="noreferrer noopener" class="btn btn-crypto">Buy with Crypto</a>
           </div>
 
         </div>
