@@ -458,7 +458,20 @@ a { color: inherit; text-decoration: none; }
 .hero-cta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--spacing-md);
+}
+
+/* Crypto payment button */
+.btn-crypto {
+  background: #ff8a00;
+  color: #000;
+  font-size: 13px;
+  padding: 11px 22px;
+}
+.btn-crypto:hover {
+  background: #ff9d26;
+  box-shadow: 0 0 24px 2px rgba(255, 138, 0, 0.35);
 }
 
 /* ============================================================
@@ -1120,6 +1133,8 @@ footer {
             <!-- EDIT: buy link -->
             <a href="https://wa.me/212770808109" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Buy Now — $9.00</a>
             <a href="#features" class="btn btn-secondary btn-lg">See What's Included</a>
+            <!-- EDIT: NOWPayments crypto link -->
+            <a href="https://nowpayments.io/payment/?iid=6157269492&source=button" target="_blank" rel="noreferrer noopener" class="btn btn-crypto">Buy with Crypto</a>
           </div>
 
         </div>
@@ -1470,9 +1485,13 @@ footer {
     <p class="cta-saving reveal reveal-delay-1">You save $90.00</p>
 
     <!-- EDIT: buy link -->
-    <a href="https://wa.me/212770808109" target="_blank" rel="noopener" class="btn btn-primary btn-lg reveal reveal-delay-2" style="font-size: 18px; padding: 20px 52px;">
-      Buy Now — $9.00
-    </a>
+    <div class="reveal reveal-delay-2" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--spacing-md);">
+      <a href="https://wa.me/212770808109" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="font-size: 18px; padding: 20px 52px;">
+        Buy Now — $9.00
+      </a>
+      <!-- EDIT: NOWPayments crypto link -->
+      <a href="https://nowpayments.io/payment/?iid=6157269492&source=button" target="_blank" rel="noreferrer noopener" class="btn btn-crypto">Buy with Crypto</a>
+    </div>
 
     <p class="urgency-line reveal reveal-delay-3">⚡ Limited stock — order today</p>
   </div>
